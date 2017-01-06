@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotazování Binárního Stromu", "Dotazování Binárního Stromu\Dotazování Binárního Stromu.csproj", "{21AE75EB-ACC5-4F1B-8547-DD0B7EBAA941}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryTree", "..\BinaryTree\BinaryTree\BinaryTree.csproj", "{0F3F9136-254F-44D9-A962-B4A91E637748}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{21AE75EB-ACC5-4F1B-8547-DD0B7EBAA941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21AE75EB-ACC5-4F1B-8547-DD0B7EBAA941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21AE75EB-ACC5-4F1B-8547-DD0B7EBAA941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3F9136-254F-44D9-A962-B4A91E637748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3F9136-254F-44D9-A962-B4A91E637748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3F9136-254F-44D9-A962-B4A91E637748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3F9136-254F-44D9-A962-B4A91E637748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
