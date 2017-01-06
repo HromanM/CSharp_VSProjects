@@ -23,7 +23,18 @@ namespace BinaryTreeTest
             tree1.insert(10);
             tree1.insert(8);
             tree1.insert(8);
-            tree1.printTree();
+
+            try
+            {
+                foreach (int item in tree1)
+                    Console.WriteLine(item);
+
+                IEnumerable<int> test = tree1.Select()
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString() + "vole");
+            }
         }
     }
 }

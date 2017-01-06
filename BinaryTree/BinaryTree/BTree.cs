@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BinaryTree
 {
-    public class BTree<TItem> where TItem : IComparable<TItem>
+    public class BTree<TItem> : IEnumerable<TItem> where TItem : IComparable<TItem>
     {
         public TItem Root {get;set;}
         public BTree<TItem> LeftLeaf {get;set;}
@@ -53,6 +54,30 @@ namespace BinaryTree
             if (this.RightLeaf != null)
                 this.RightLeaf.printTree();
            
+        }
+
+        IEnumerator<TItem> IEnumerable<TItem>.GetEnumerator()
+        {
+            // enumerator solution
+            //return new BTreeEnumerator<TItem>(this);
+
+            // iterator solution
+            if (this.LeftLeaf != null)
+            {
+                foreach (TItem item in this.LeftLeaf)
+                    yield return item;
+            }
+                yield return this.Root;
+            if (this.RightLeaf != null)
+            {
+                foreach (TItem item in this.RightLeaf)
+                    yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
