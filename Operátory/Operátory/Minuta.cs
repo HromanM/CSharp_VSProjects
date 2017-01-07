@@ -14,10 +14,34 @@ namespace Operátory
 		}
 
 		// sem pøidejte operator==(Minuta, int)
+        public static bool operator==(Minuta m, int i)
+        {
+            return m.hodnota == i;
+        }
+        public static bool operator==(int i, Minuta m)
+        {
+            return m.hodnota == i;
+        }
+        public static bool operator==(Minuta m, Minuta n)
+        {
+            return m.hodnota == n.hodnota;
+        }
 
-		// sem pøidejte operator!=(Minuta, int)
+        // sem pøidejte operator!=(Minuta, int)
+        public static bool operator !=(Minuta m, int i)
+        {
+            return m.hodnota != i;
+        }
+        public static bool operator !=(int i, Minuta m)
+        {
+            return m.hodnota != i;
+        }
+        public static bool operator !=(Minuta m, Minuta n)
+        {
+            return m.hodnota != n.hodnota;
+        }
 
-		public override bool Equals(object other)
+        public override bool Equals(object other)
 		{
 			return (other is Minuta) && Equals((Minuta)other);
 		}

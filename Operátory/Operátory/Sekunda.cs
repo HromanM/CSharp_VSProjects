@@ -14,37 +14,21 @@ namespace Operátory
 		}
 
 		// sem pøidejte statický implicitní operátor Sekunda (int arg)
+        public static implicit operator Sekunda(int arg)
+        {
+            return new Sekunda(arg);
+        }
 
         // následující operátor nemažte
 		public static bool operator==(Sekunda lp, Sekunda rp)
 		{
 			return lp.hodnota == rp.hodnota;
 		}
-
-		public static bool operator==(Sekunda lp, int rp)
-		{
-			return lp.hodnota == rp;
-		}
-
-		public static bool operator==(int lp, Sekunda rp)
-		{
-			return lp == rp.hodnota;
-		}
 		
 		// následující operátor nemažte 
 		public static bool operator!=(Sekunda lp, Sekunda rp)
 		{
 			return lp.hodnota != rp.hodnota;
-		}
-
-		public static bool operator!=(Sekunda lp, int rp)
-		{
-			return lp.hodnota != rp;
-		}
-
-		public static bool operator!=(int lp, Sekunda rp)
-		{
-			return lp != rp.hodnota;
 		}
 
 		public override bool Equals(object other)

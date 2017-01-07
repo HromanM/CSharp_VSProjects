@@ -1,0 +1,81 @@
+﻿<Window x:Class="Ringers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ringers"
+        mc:Ignorable="d"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="Center-Moravian Ringers association - members" Height="470" Width="600">
+    <Window.Resources>
+        <Style x:Key="RingersStyle" TargetType="Control">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="Control">
+            <Setter Property="Button.Background" Value="Gray"/>
+            <Setter Property="Button.Foreground" Value="White"/>
+            <Setter Property="Button.FontFamily" Value="Comic Sans MS"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Blue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label1" Content="Jmeno:" HorizontalAlignment="Left" Margin="29,25,0,0" VerticalAlignment="Top"  Height="23" Width="75"/>
+        <TextBox Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Name" HorizontalAlignment="Left" Height="21" Margin="121,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.633"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label2" Content="Prijmeni:" HorizontalAlignment="Left" Margin="305,25,0,0" VerticalAlignment="Top" Height="23" Width="175"/>
+        <TextBox Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Surname" HorizontalAlignment="Left" Height="21" Margin="380,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.633"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label3" Content="Vez:" HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top" Height="23"  Width="75"/>
+        <ComboBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Towers" HorizontalAlignment="Left" Height="23" Margin="121,72,0,0" VerticalAlignment="Top" Width="275"/>
+        <CheckBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Captain" Content="Je kapitan:" HorizontalAlignment="Left" Margin="420,72,0,0" VerticalAlignment="Top" Height="23"  Width="90"/>
+        <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label5" Content="Clenem od:" HorizontalAlignment="Left" Margin="29,134,0,0" VerticalAlignment="Top" Height="23" Width="75"/>
+        <WindowsFormsHost Panel.ZIndex="1" Name="HostMemberSince" HorizontalAlignment="Left" Height="23" Margin="121,134,0,0" VerticalAlignment="Top" Width="275">
+            <wf:DateTimePicker Name="MemberSince"/>
+        </WindowsFormsHost>
+        <GroupBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="YearsOfExp" Header="Experience" HorizontalAlignment="Left" Margin="29,174,0,0" VerticalAlignment="Top" Height="200" Width="258">
+            <StackPanel Name="stackPanel1" Height="151" Width="224">
+                <RadioButton Name="Novice" Height="16" Width="120" Margin="0,10,0,0">
+                    Do 1 roku
+                </RadioButton>
+                <RadioButton Name="MediumExperienced" Height="16" Width="120" Margin="0,15,0,0">
+                    1 az 4 roky
+                </RadioButton>
+                <RadioButton Name="Experienced" Height="16" Width="120" Margin="0,20,0,0">
+                    5 az 9 let
+                </RadioButton>
+                <RadioButton Name="Expert" Height="16" Width="120" Margin="0,25,0,0">
+                    10 let a vice
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <ListBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Metods" HorizontalAlignment="Left" Height="200" Margin="310,174,0,0" VerticalAlignment="Top" Width="245"/>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonAdd" Content="Pridat" HorizontalAlignment="Left" Margin="188,388,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonClean" Content="Vycistit" HorizontalAlignment="Left" Margin="313,388,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image Panel.ZIndex="0" x:Name="image" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top">
+            <Image.Source>
+                <BitmapImage UriSource="Zvon.gif"/>
+            </Image.Source>
+        </Image>
+
+    </Grid>
+</Window>
