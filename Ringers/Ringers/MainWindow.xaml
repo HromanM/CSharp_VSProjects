@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Ringers"
         mc:Ignorable="d"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        Title="Center-Moravian Ringers association - members" Height="470" Width="600">
+        Title="Center-Moravian Ringers association - members" Height="470" Width="600" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="RingersStyle" TargetType="Control">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -68,14 +68,21 @@
                 </RadioButton>
             </StackPanel>
         </GroupBox>
-        <ListBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Metods" HorizontalAlignment="Left" Height="200" Margin="310,174,0,0" VerticalAlignment="Top" Width="245"/>
-        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonAdd" Content="Pridat" HorizontalAlignment="Left" Margin="188,388,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonClean" Content="Vycistit" HorizontalAlignment="Left" Margin="313,388,0,0" VerticalAlignment="Top" Width="75"/>
+        <ListBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Metods" HorizontalAlignment="Left" Height="200" Margin="310,174,0,0" VerticalAlignment="Top" Width="245">
+        </ListBox>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonAdd" Content="Pridat" HorizontalAlignment="Left" Margin="188,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonClean" Content="Vycistit" HorizontalAlignment="Left" Margin="313,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonClean_Click"/>
         <Image Panel.ZIndex="0" x:Name="image" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top">
             <Image.Source>
                 <BitmapImage UriSource="Zvon.gif"/>
             </Image.Source>
         </Image>
+        <DockPanel Name="dockPanel1" HorizontalAlignment="Stretch" Height="100" LastChildFill="False" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto">
+            <Menu Height="22" Name="menu1" Width="Auto" DockPanel.Dock="Top" VerticalAlignment="Top">
+                <MenuItem Header="_Soubor"/>
+                <MenuItem Header="_Napoveda"/>
+            </Menu>    
+        </DockPanel>/>
 
     </Grid>
 </Window>
