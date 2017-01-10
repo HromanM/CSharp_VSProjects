@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace Ringers
 {
@@ -24,6 +26,18 @@ namespace Ringers
         {
             InitializeComponent();
             this.ResetWindow();
+
+            MenuItem contextMenuItemSave = new MenuItem();
+            contextMenuItemSave.Header = "Uloz clena";
+            contextMenuItemSave.Click += new RoutedEventHandler(saveMember_Click);
+
+            MenuItem contextMenuItemClean = new MenuItem();
+            contextMenuItemClean.Header = "Vycisti okno";
+            contextMenuItemClean.Click += new RoutedEventHandler(buttonClean_Click);
+
+            windowContextMenu = new ContextMenu();
+            windowContextMenu.Items.Add(contextMenuItemSave);
+            windowContextMenu.Items.Add(contextMenuItemClean);
         }
 
         public void ResetWindow()
@@ -55,13 +69,14 @@ namespace Ringers
         private string[] towers = { "Lipnik nad Becvou", "Drevohostice", "Domazlice", "Jankovice" };
         private string[] ringMelodies = {"Ave Maria", "Sneni", "Romance", "Nocturno", "Rubinstein",
             "Praotec", "Star0 vysehradske poteseni", "Gyga" };
+        private ContextMenu windowContextMenu = null;
 
         private void buttonClean_Click(object sender, RoutedEventArgs e)
         {
             this.ResetWindow();
         }
 
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+       /* private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
             string nameATower = String.Format(
                 "Clenem {0} {1} z veze v obci {2} vyzvani metody:",
@@ -74,7 +89,7 @@ namespace Ringers
                     details.AppendLine(cb.Content.ToString());
             }
             MessageBox.Show(details.ToString(), "Udaje o clenovi");
-        }
+        }*/
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -85,6 +100,80 @@ namespace Ringers
                 MessageBoxImage.Question,
                 MessageBoxResult.No);
             e.Cancel = (result == MessageBoxResult.No);
+        }
+
+        private void saveMember_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.DefaultExt = "txt";
+            saveDlg.AddExtension = true;
+            saveDlg.FileName = "Members";
+            saveDlg.InitialDirectory = @"C:\Users\yt\Documents\prace\Skoleni\C#\CSharp_VSProjects\Ringers";
+            saveDlg.OverwritePrompt = true;
+            saveDlg.Title = "Ringers";
+            saveDlg.ValidateNames = true;
+            if (saveDlg.ShowDialog().Value)
+            {
+                using (StreamWriter strWriter = new StreamWriter(saveDlg.FileName))
+                {
+
+                    strWriter.WriteLine("Jmeno: {0}", Name.Text);
+                    strWriter.WriteLine("Prijmeni: {0}", Surname.Text);
+                    strWriter.WriteLine("Vez: {0}", Towers.Text);
+                    strWriter.WriteLine("Je kapitan: {0}", Captain.IsChecked.ToString());
+                    System.Windows.Forms.DateTimePicker memberDate =
+                        HostMemberSince.Child as System.Windows.Forms.DateTimePicker;
+                    strWriter.WriteLine("Clenem od: {0}", memberDate.Value.ToString());
+                    strWriter.WriteLine("Metody: ");
+                    foreach (CheckBox item in Metods.Items)
+                    {
+                        if (item.IsChecked.Value)
+                            strWriter.WriteLine(item.Content.ToString());
+                    }
+                    MessageBox.Show("Udaje ulozeny", "Ulozeno");
+                }
+            }
+        }
+
+        private void endApp_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void newMember_Click(object sender, RoutedEventArgs e)
+        {
+            this.ResetWindow();
+            saveMember.IsEnabled = true;
+            Name.IsEnabled = true;
+            Surname.IsEnabled = true;
+            Towers.IsEnabled = true;
+            Captain.IsEnabled = true;
+            HostMemberSince.IsEnabled = true;
+            YearsOfExp.IsEnabled = true;
+            Metods.IsEnabled = true;
+           // buttonAdd.IsEnabled = true;
+            buttonClean.IsEnabled = true;
+            this.ContextMenu = windowContextMenu;
+        }
+
+        private void aboutApp_Click(object sender, RoutedEventArgs e)
+        {
+            OAplikaci aboutWindow = new OAplikaci();
+            aboutWindow.ShowDialog();
+        }
+
+        private void buttonRead_Click(object sender, RoutedEventArgs e)
+        {
+            using (StreamReader strReader = new StreamReader("Members.txt"))
+            {
+                MessageBox.Show(strReader.ReadLine(), "Nacteno");   
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Name.Text = String.Empty;
+            Surname.Text = String.Empty;
         }
     }
 }

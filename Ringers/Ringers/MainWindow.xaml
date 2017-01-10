@@ -21,10 +21,13 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <ContextMenu x:Key="nabidkaTextovehoPole" Style="{StaticResource RingersStyle}">
+            <MenuItem Header="Vymaz" Name="Delete" Click="Delete_Click"/>
+        </ContextMenu>
     </Window.Resources>
     <Grid>
         <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label1" Content="Jmeno:" HorizontalAlignment="Left" Margin="29,25,0,0" VerticalAlignment="Top"  Height="23" Width="75"/>
-        <TextBox Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Name" HorizontalAlignment="Left" Height="21" Margin="121,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5">
+        <TextBox ContextMenu="{StaticResource nabidkaTextovehoPole}" Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Name" HorizontalAlignment="Left" Height="21" Margin="121,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5" IsEnabled="False">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -35,7 +38,7 @@
             </TextBox.RenderTransform>
         </TextBox>
         <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label2" Content="Prijmeni:" HorizontalAlignment="Left" Margin="305,25,0,0" VerticalAlignment="Top" Height="23" Width="175"/>
-        <TextBox Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Surname" HorizontalAlignment="Left" Height="21" Margin="380,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5">
+        <TextBox ContextMenu="{StaticResource nabidkaTextovehoPole}" Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="Surname" HorizontalAlignment="Left" Height="21" Margin="380,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.5,0.5" IsEnabled="False">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -46,13 +49,13 @@
             </TextBox.RenderTransform>
         </TextBox>
         <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label3" Content="Vez:" HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top" Height="23"  Width="75"/>
-        <ComboBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Towers" HorizontalAlignment="Left" Height="23" Margin="121,72,0,0" VerticalAlignment="Top" Width="275"/>
-        <CheckBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Captain" Content="Je kapitan:" HorizontalAlignment="Left" Margin="420,72,0,0" VerticalAlignment="Top" Height="23"  Width="90"/>
+        <ComboBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Towers" HorizontalAlignment="Left" Height="23" Margin="121,72,0,0" VerticalAlignment="Top" Width="275" IsEnabled="False"/>
+        <CheckBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Captain" Content="Je kapitan:" HorizontalAlignment="Left" Margin="420,72,0,0" VerticalAlignment="Top" Height="23"  Width="90" IsEnabled="False"/>
         <Label Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="label5" Content="Clenem od:" HorizontalAlignment="Left" Margin="29,134,0,0" VerticalAlignment="Top" Height="23" Width="75"/>
-        <WindowsFormsHost Panel.ZIndex="1" Name="HostMemberSince" HorizontalAlignment="Left" Height="23" Margin="121,134,0,0" VerticalAlignment="Top" Width="275">
+        <WindowsFormsHost Panel.ZIndex="1" Name="HostMemberSince" HorizontalAlignment="Left" Height="23" Margin="121,134,0,0" VerticalAlignment="Top" Width="275" IsEnabled="False">
             <wf:DateTimePicker Name="MemberSince"/>
         </WindowsFormsHost>
-        <GroupBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="YearsOfExp" Header="Experience" HorizontalAlignment="Left" Margin="29,174,0,0" VerticalAlignment="Top" Height="200" Width="258">
+        <GroupBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="YearsOfExp" Header="Experience" HorizontalAlignment="Left" Margin="29,174,0,0" VerticalAlignment="Top" Height="200" Width="258" IsEnabled="False">
             <StackPanel Name="stackPanel1" Height="151" Width="224">
                 <RadioButton Name="Novice" Height="16" Width="120" Margin="0,10,0,0">
                     Do 1 roku
@@ -68,21 +71,40 @@
                 </RadioButton>
             </StackPanel>
         </GroupBox>
-        <ListBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Metods" HorizontalAlignment="Left" Height="200" Margin="310,174,0,0" VerticalAlignment="Top" Width="245">
+        <ListBox Panel.ZIndex="1" Style="{StaticResource RingersStyle}" x:Name="Metods" HorizontalAlignment="Left" Height="200" Margin="310,174,0,0" VerticalAlignment="Top" Width="245" IsEnabled="False">
         </ListBox>
-        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonAdd" Content="Pridat" HorizontalAlignment="Left" Margin="188,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
-        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonClean" Content="Vycistit" HorizontalAlignment="Left" Margin="313,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonClean_Click"/>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonClean" Content="Vycistit" HorizontalAlignment="Left" Margin="313,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonClean_Click" IsEnabled="False"/>
+        <Button Panel.ZIndex="1" Style="{StaticResource buttonStyle}" x:Name="buttonRead" Content="Read" HorizontalAlignment="Left" Margin="113,388,0,0" VerticalAlignment="Top" Width="75" Click="buttonRead_Click"/>
         <Image Panel.ZIndex="0" x:Name="image" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top">
             <Image.Source>
                 <BitmapImage UriSource="Zvon.gif"/>
             </Image.Source>
         </Image>
         <DockPanel Name="dockPanel1" HorizontalAlignment="Stretch" Height="100" LastChildFill="False" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto">
-            <Menu Height="22" Name="menu1" Width="Auto" DockPanel.Dock="Top" VerticalAlignment="Top">
-                <MenuItem Header="_Soubor"/>
-                <MenuItem Header="_Napoveda"/>
-            </Menu>    
-        </DockPanel>/>
+            <Menu Style="{StaticResource RingersStyle}" Height="22" Name="menu1" Width="Auto" DockPanel.Dock="Top" VerticalAlignment="Top">
+                <MenuItem Header="_Soubor" Height="22">
+                    <MenuItem Header="_Novy Clen" Name="newMember" Click="newMember_Click">
+                        <MenuItem.Icon>
+                            <Image Source="tvář.bmp"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Ulozit udaje clena" Name="saveMember" IsEnabled="False" Click="saveMember_Click">
+                        <MenuItem.Icon>
+                            <Image Source="nota.bmp"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Konec" Name="endApp" Click="endApp_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Napoveda">
+                    <MenuItem Header="_O aplikaci" Name="aboutApp" Click="aboutApp_Click">
+                        <MenuItem.Icon>
+                            <Image Source="zvonění.bmp"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
 
     </Grid>
 </Window>
