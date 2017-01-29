@@ -1,0 +1,101 @@
+﻿<Window x:Class="Zákazníci.FormulářZákazníka"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cust="clr-namespace:Zákazníci"
+    Title="Údaje zákazníka" Height="273" Width="370" ResizeMode="NoResize">
+    <Window.Resources>
+        <cust:Zákazník x:Key="dataZákazníka" />
+        <cust:PřevodníkOslovení x:Key="převodníkOslovení" />
+        <cust:PřevodníkPohlaví x:Key="převodníkPohlaví" />
+        <Style x:Key="chybovýStyl" TargetType="Control">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" 
+                    Value="{Binding RelativeSource={x:Static RelativeSource.Self},Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel Name="dockPanel1" Height="34" VerticalAlignment="Top" Margin="0">
+            <Menu Height="22" Name="menu1" Width="Auto" VerticalAlignment="Top" >
+                <MenuItem Header="_Soubor" >
+                    <MenuItem Header="_Uložit" Name="uložitZákazníka" Click="uložitZákazníka_Click" />               
+                    <MenuItem Header="_Konec" Name="konec" Click="konec_Click" />
+                </MenuItem>                    
+            </Menu>
+        </DockPanel>
+        <Label Height="23" Margin="0,37,0,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63">Oslovení</Label>
+        <ComboBox Style="{StaticResource chybovýStyl}" Height="21" Margin="70,39,0,0" Name="oslovení" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60">
+            <ComboBox.Items>
+                <ComboBoxItem>
+                    Pan
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Paní
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Slečna
+                </ComboBoxItem>
+            </ComboBox.Items>
+            <ComboBox.Text>
+                <Binding Source="{StaticResource dataZákazníka}" Path="Oslovení" 
+                         Converter="{StaticResource převodníkOslovení}" 
+                         UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
+        <Label Height="23" Margin="0,70,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63">Jméno</Label>
+        <TextBox Style="{StaticResource chybovýStyl}" Height="21" Margin="70,74,0,0" Name="jméno" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
+            <TextBox.Text>
+                <Binding Source="{StaticResource dataZákazníka}" Path="Jméno" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Style="{StaticResource chybovýStyl}" Height="21" HorizontalAlignment="Left" Margin="210,74,0,0" Name="příjmení" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Source="{StaticResource dataZákazníka}" Path="Příjmení" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <GroupBox Header="Pohlaví" Margin="70,120,0,0" Name="pohlaví" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" >
+            <StackPanel Height="80" Name="stackPanel1" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" >
+                <RadioButton Style="{StaticResource chybovýStyl}" Height="16" Name="muž" Width="120" Margin="0,20,0,0" Checked="muž_Checked">
+                    Muž
+                    <RadioButton.IsChecked>
+                        <Binding Source="{StaticResource dataZákazníka}" 
+                            Path="Pohlaví" 
+                            Converter="{StaticResource převodníkPohlaví}" 
+                            ConverterParameter="Muž">
+                            <Binding.ValidationRules>
+                                <ExceptionValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+                <RadioButton Style="{StaticResource chybovýStyl}" Height="16" Name="žena" Width="120" Margin="0,10,0,0" Checked="žena_Checked">
+                    Žena
+                    <RadioButton.IsChecked>
+                        <Binding Source="{StaticResource dataZákazníka}" 
+                            Path="Pohlaví" 
+                            Converter="{StaticResource převodníkPohlaví}" 
+                            ConverterParameter="Žena">
+                            <Binding.ValidationRules>
+                                <ExceptionValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>        
+    </Grid>
+</Window>
